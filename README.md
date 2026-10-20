@@ -56,16 +56,6 @@ robust-indoor-localisation/
 - Compare baseline machine learning and filtering approaches.
 - Analyse performance using appropriate evaluation metrics.
 
-## Installation
-
-Install the required Python dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-The UJIIndoorLoc dataset must be obtained separately and placed in the appropriate local data directory.
-
 ## Author
 
 **Ahsan Khalid**
@@ -76,3 +66,28 @@ De Montfort University, United Kingdom
 GitHub: [https://github.com/ahsankhalid52-ai-dev](https://github.com/ahsankhalid52-ai-dev)
 # robust-indoor-localisation
 MSc AI dissertation on robust indoor localisation using Wi-Fi RSSI fingerprinting, KNN, Random Forest, and noise-resilience evaluation.
+## How to Run the Project
+
+1. Download the UJIIndoorLoc dataset from its original source.
+2. Place the dataset ZIP file in `data/raw/` and name it `ujiindoorloc.zip`.
+3. Open a terminal in the main project directory.
+4. Install the dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+5. Run the six experiments in order:
+
+```bash
+python src/01_dataset_inspection.py
+python src/02_preprocessing.py
+python src/03_clean_baseline_models.py
+python src/04_noise_missing_experiments.py
+python src/05_kalman_particle_filtering.py
+python src/06_generate_results_charts.py
+```
+
+The scripts generate processed data, experiment summaries, evaluation tables and charts in the project's `data/processed/` and `results/` directories.
+
+**Note:** The dataset is not included in this repository and must be downloaded separately. The filtering experiments use constructed validation sequences rather than recorded continuous pedestrian trajectories.
