@@ -1,0 +1,191 @@
+{
+  "generated_at": "2026-09-02T11:36:28",
+  "project_root": "D:\\Ahsan Assignment\\Dissertation\\Ahsan_Khalid_MSc_Project_Student_Cartridge\\MSc_Project_Code_Skeleton",
+  "step": "03_clean_baseline_models",
+  "locked_configuration": {
+    "config_version": "2026-08-31-lock-v1",
+    "random_seed": 42,
+    "feature_dtype": "float64",
+    "knn": {
+      "n_neighbors": 5,
+      "weights": "distance",
+      "metric": "euclidean"
+    },
+    "random_forest": {
+      "n_estimators": 150,
+      "random_state": 42,
+      "class_weight": "balanced_subsample"
+    },
+    "scenarios": [
+      {
+        "name": "clean_validation",
+        "noise_sigma_dbm": 0.0,
+        "missing_detected_fraction": 0.0,
+        "description": "Original preprocessed validation data with no extra artificial corruption."
+      },
+      {
+        "name": "noise_low_2dbm",
+        "noise_sigma_dbm": 2.0,
+        "missing_detected_fraction": 0.0,
+        "description": "Gaussian RSSI noise with sigma=2 dBm applied to detected WAP signals."
+      },
+      {
+        "name": "noise_medium_5dbm",
+        "noise_sigma_dbm": 5.0,
+        "missing_detected_fraction": 0.0,
+        "description": "Gaussian RSSI noise with sigma=5 dBm applied to detected WAP signals."
+      },
+      {
+        "name": "noise_high_10dbm",
+        "noise_sigma_dbm": 10.0,
+        "missing_detected_fraction": 0.0,
+        "description": "Gaussian RSSI noise with sigma=10 dBm applied to detected WAP signals."
+      },
+      {
+        "name": "missing_10pct_detected",
+        "noise_sigma_dbm": 0.0,
+        "missing_detected_fraction": 0.1,
+        "description": "Randomly mask 10% of detected WAP signals to no-signal value 0.0."
+      },
+      {
+        "name": "missing_20pct_detected",
+        "noise_sigma_dbm": 0.0,
+        "missing_detected_fraction": 0.2,
+        "description": "Randomly mask 20% of detected WAP signals to no-signal value 0.0."
+      },
+      {
+        "name": "missing_30pct_detected",
+        "noise_sigma_dbm": 0.0,
+        "missing_detected_fraction": 0.3,
+        "description": "Randomly mask 30% of detected WAP signals to no-signal value 0.0."
+      },
+      {
+        "name": "combined_5dbm_noise_20pct_missing",
+        "noise_sigma_dbm": 5.0,
+        "missing_detected_fraction": 0.2,
+        "description": "Apply sigma=5 dBm noise and then mask 20% of detected WAP signals."
+      }
+    ],
+    "environment": {
+      "python": "3.10.11",
+      "platform": "Windows-10-10.0.22631-SP0",
+      "numpy": "2.2.6",
+      "pandas": "2.3.0",
+      "scikit_learn": "1.6.1"
+    }
+  },
+  "train_rows": 19937,
+  "validation_rows": 1111,
+  "feature_count": 520,
+  "features_used": "WAP001-WAP520 scaled features from Step 2",
+  "classification_targets": [
+    "BUILDINGID",
+    "FLOOR",
+    "BUILDING_FLOOR"
+  ],
+  "coordinate_targets": [
+    "LONGITUDE",
+    "LATITUDE"
+  ],
+  "classification_metrics": [
+    {
+      "task": "classification",
+      "model": "KNN_5_distance",
+      "target": "BUILDINGID",
+      "accuracy": 0.9982,
+      "macro_f1": 0.997983,
+      "weighted_f1": 0.998201,
+      "fit_seconds": 0.054,
+      "predict_seconds": 1.134
+    },
+    {
+      "task": "classification",
+      "model": "KNN_5_distance",
+      "target": "FLOOR",
+      "accuracy": 0.887489,
+      "macro_f1": 0.884409,
+      "weighted_f1": 0.888031,
+      "fit_seconds": 0.068,
+      "predict_seconds": 0.109
+    },
+    {
+      "task": "classification",
+      "model": "KNN_5_distance",
+      "target": "BUILDING_FLOOR",
+      "accuracy": 0.887489,
+      "macro_f1": 0.866833,
+      "weighted_f1": 0.888375,
+      "fit_seconds": 0.096,
+      "predict_seconds": 0.142
+    },
+    {
+      "task": "classification",
+      "model": "RandomForest_150",
+      "target": "BUILDINGID",
+      "accuracy": 0.9991,
+      "macro_f1": 0.999146,
+      "weighted_f1": 0.9991,
+      "fit_seconds": 0.976,
+      "predict_seconds": 0.1
+    },
+    {
+      "task": "classification",
+      "model": "RandomForest_150",
+      "target": "FLOOR",
+      "accuracy": 0.913591,
+      "macro_f1": 0.898921,
+      "weighted_f1": 0.913736,
+      "fit_seconds": 1.266,
+      "predict_seconds": 0.073
+    },
+    {
+      "task": "classification",
+      "model": "RandomForest_150",
+      "target": "BUILDING_FLOOR",
+      "accuracy": 0.906391,
+      "macro_f1": 0.892406,
+      "weighted_f1": 0.907387,
+      "fit_seconds": 1.217,
+      "predict_seconds": 0.056
+    }
+  ],
+  "coordinate_regression_metrics": [
+    {
+      "task": "coordinate_regression",
+      "model": "KNNRegressor_5_distance",
+      "longitude_mae": 6.260565,
+      "latitude_mae": 5.768711,
+      "longitude_rmse": 12.489829,
+      "latitude_rmse": 10.845912,
+      "mean_positioning_error_m": 9.34228,
+      "median_positioning_error_m": 5.934393,
+      "p75_positioning_error_m": 11.117619,
+      "p90_positioning_error_m": 19.348794,
+      "max_positioning_error_m": 239.434126,
+      "fit_seconds": 0.049,
+      "predict_seconds": 0.118
+    },
+    {
+      "task": "coordinate_regression",
+      "model": "RandomForestRegressor_150",
+      "longitude_mae": 8.649677,
+      "latitude_mae": 7.510638,
+      "longitude_rmse": 13.957628,
+      "latitude_rmse": 12.205343,
+      "mean_positioning_error_m": 12.485688,
+      "median_positioning_error_m": 8.061189,
+      "p75_positioning_error_m": 15.166539,
+      "p90_positioning_error_m": 30.229512,
+      "max_positioning_error_m": 114.299987,
+      "fit_seconds": 10.237,
+      "predict_seconds": 0.16
+    }
+  ],
+  "output_files": {
+    "classification_metrics": "D:\\Ahsan Assignment\\Dissertation\\Ahsan_Khalid_MSc_Project_Student_Cartridge\\MSc_Project_Code_Skeleton\\results\\tables\\03_classification_metrics.csv",
+    "coordinate_regression_metrics": "D:\\Ahsan Assignment\\Dissertation\\Ahsan_Khalid_MSc_Project_Student_Cartridge\\MSc_Project_Code_Skeleton\\results\\tables\\03_coordinate_regression_metrics.csv",
+    "baseline_predictions": "D:\\Ahsan Assignment\\Dissertation\\Ahsan_Khalid_MSc_Project_Student_Cartridge\\MSc_Project_Code_Skeleton\\results\\tables\\03_baseline_predictions.csv",
+    "baseline_summary_json": "D:\\Ahsan Assignment\\Dissertation\\Ahsan_Khalid_MSc_Project_Student_Cartridge\\MSc_Project_Code_Skeleton\\results\\tables\\03_baseline_summary.json",
+    "baseline_summary_text": "D:\\Ahsan Assignment\\Dissertation\\Ahsan_Khalid_MSc_Project_Student_Cartridge\\MSc_Project_Code_Skeleton\\results\\experiment_logs\\03_clean_baseline_models_summary.txt"
+  }
+}

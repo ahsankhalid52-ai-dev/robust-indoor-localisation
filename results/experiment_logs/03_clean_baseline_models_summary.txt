@@ -1,0 +1,31 @@
+MSc Project - Step 3 Clean Baseline Models Summary
+Generated: 2026-09-02 11:36:28
+
+Purpose:
+  Train and evaluate clean-data baseline models after Step 2 preprocessing.
+  This step does not use artificial noise, missing-WAP simulation, Kalman filtering, or particle filtering yet.
+
+Input data:
+  Training samples: 19937
+  Validation samples: 1111
+  Feature count: 520
+  Features: WAP001-WAP520 scaled to [0, 1].
+
+Classification results:
+  KNN_5_distance | BUILDINGID: accuracy=0.9982, macro_f1=0.997983, weighted_f1=0.998201
+  KNN_5_distance | FLOOR: accuracy=0.887489, macro_f1=0.884409, weighted_f1=0.888031
+  KNN_5_distance | BUILDING_FLOOR: accuracy=0.887489, macro_f1=0.866833, weighted_f1=0.888375
+  RandomForest_150 | BUILDINGID: accuracy=0.9991, macro_f1=0.999146, weighted_f1=0.9991
+  RandomForest_150 | FLOOR: accuracy=0.913591, macro_f1=0.898921, weighted_f1=0.913736
+  RandomForest_150 | BUILDING_FLOOR: accuracy=0.906391, macro_f1=0.892406, weighted_f1=0.907387
+
+Coordinate regression results:
+  KNNRegressor_5_distance: mean_error=9.34228 m, median_error=5.934393 m, p90_error=19.348794 m
+  RandomForestRegressor_150: mean_error=12.485688 m, median_error=8.061189 m, p90_error=30.229512 m
+
+Interpretation guidance:
+  These are clean-data baseline results. They become the comparison point for later noise, missing-data, Kalman, and particle-filter experiments.
+  Do not overclaim from this step. The next valid experiment is controlled noise/missing-WAP degradation testing.
+
+Next step:
+  Review baseline results, then implement Step 4: controlled RSSI noise and missing-WAP simulation.

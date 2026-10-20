@@ -1,0 +1,366 @@
+{
+  "generated_at": "2026-09-02T11:37:28",
+  "project_root": "D:\\Ahsan Assignment\\Dissertation\\Ahsan_Khalid_MSc_Project_Student_Cartridge\\MSc_Project_Code_Skeleton",
+  "step": "05_kalman_particle_filtering",
+  "random_seed": 42,
+  "locked_configuration": {
+    "config_version": "2026-08-31-lock-v1",
+    "random_seed": 42,
+    "feature_dtype": "float64",
+    "knn": {
+      "n_neighbors": 5,
+      "weights": "distance",
+      "metric": "euclidean"
+    },
+    "random_forest": {
+      "n_estimators": 150,
+      "random_state": 42,
+      "class_weight": "balanced_subsample"
+    },
+    "scenarios": [
+      {
+        "name": "clean_validation",
+        "noise_sigma_dbm": 0.0,
+        "missing_detected_fraction": 0.0,
+        "description": "Original preprocessed validation data with no extra artificial corruption."
+      },
+      {
+        "name": "noise_low_2dbm",
+        "noise_sigma_dbm": 2.0,
+        "missing_detected_fraction": 0.0,
+        "description": "Gaussian RSSI noise with sigma=2 dBm applied to detected WAP signals."
+      },
+      {
+        "name": "noise_medium_5dbm",
+        "noise_sigma_dbm": 5.0,
+        "missing_detected_fraction": 0.0,
+        "description": "Gaussian RSSI noise with sigma=5 dBm applied to detected WAP signals."
+      },
+      {
+        "name": "noise_high_10dbm",
+        "noise_sigma_dbm": 10.0,
+        "missing_detected_fraction": 0.0,
+        "description": "Gaussian RSSI noise with sigma=10 dBm applied to detected WAP signals."
+      },
+      {
+        "name": "missing_10pct_detected",
+        "noise_sigma_dbm": 0.0,
+        "missing_detected_fraction": 0.1,
+        "description": "Randomly mask 10% of detected WAP signals to no-signal value 0.0."
+      },
+      {
+        "name": "missing_20pct_detected",
+        "noise_sigma_dbm": 0.0,
+        "missing_detected_fraction": 0.2,
+        "description": "Randomly mask 20% of detected WAP signals to no-signal value 0.0."
+      },
+      {
+        "name": "missing_30pct_detected",
+        "noise_sigma_dbm": 0.0,
+        "missing_detected_fraction": 0.3,
+        "description": "Randomly mask 30% of detected WAP signals to no-signal value 0.0."
+      },
+      {
+        "name": "combined_5dbm_noise_20pct_missing",
+        "noise_sigma_dbm": 5.0,
+        "missing_detected_fraction": 0.2,
+        "description": "Apply sigma=5 dBm noise and then mask 20% of detected WAP signals."
+      }
+    ],
+    "environment": {
+      "python": "3.10.11",
+      "platform": "Windows-10-10.0.22631-SP0",
+      "numpy": "2.2.6",
+      "pandas": "2.3.0",
+      "scikit_learn": "1.6.1"
+    }
+  },
+  "input_policy": "KNN coordinate predictions are treated as noisy coordinate measurements; filters operate on validation pseudo-sequences.",
+  "important_limitation": "UJIIndoorLoc validation data is not a true continuous pedestrian trajectory dataset. Sequences are constructed as a controlled proxy using PHONEID + predicted BUILDING_FLOOR sorted by TIMESTAMP.",
+  "train_rows": 19937,
+  "validation_rows": 1111,
+  "feature_count": 520,
+  "models": {
+    "coordinate_measurement_model": "KNNRegressor_5_distance",
+    "sequence_segmentation_model": "RandomForest_150 BUILDING_FLOOR classifier",
+    "filter_methods": [
+      "raw_knn_measurement",
+      "kalman_filtered",
+      "particle_filtered"
+    ]
+  },
+  "model_fit_seconds": {
+    "coordinate_model": 0.050667,
+    "building_floor_model": 1.223737
+  },
+  "scenarios": [
+    {
+      "name": "clean_validation",
+      "noise_sigma_dbm": 0.0,
+      "missing_detected_fraction": 0.0,
+      "description": "Original preprocessed validation data with no extra artificial corruption."
+    },
+    {
+      "name": "noise_medium_5dbm",
+      "noise_sigma_dbm": 5.0,
+      "missing_detected_fraction": 0.0,
+      "description": "Gaussian RSSI noise with sigma=5 dBm applied to detected WAP signals."
+    },
+    {
+      "name": "noise_high_10dbm",
+      "noise_sigma_dbm": 10.0,
+      "missing_detected_fraction": 0.0,
+      "description": "Gaussian RSSI noise with sigma=10 dBm applied to detected WAP signals."
+    },
+    {
+      "name": "missing_20pct_detected",
+      "noise_sigma_dbm": 0.0,
+      "missing_detected_fraction": 0.2,
+      "description": "Randomly mask 20% of detected WAP signals to no-signal value 0.0."
+    },
+    {
+      "name": "missing_30pct_detected",
+      "noise_sigma_dbm": 0.0,
+      "missing_detected_fraction": 0.3,
+      "description": "Randomly mask 30% of detected WAP signals to no-signal value 0.0."
+    },
+    {
+      "name": "combined_5dbm_noise_20pct_missing",
+      "noise_sigma_dbm": 5.0,
+      "missing_detected_fraction": 0.2,
+      "description": "Apply sigma=5 dBm noise and then mask 20% of detected WAP signals."
+    }
+  ],
+  "scenario_summaries": {
+    "clean_validation": {
+      "corruption": {
+        "scenario_seed": 42,
+        "detected_values_before": 18304,
+        "detected_values_after": 18304,
+        "noise_sigma_dbm": 0.0,
+        "noise_values_changed": 0,
+        "missing_detected_fraction": 0.0,
+        "missing_values_masked": 0,
+        "feature_min_after": 0.0,
+        "feature_max_after": 0.6909090909090909,
+        "feature_mean_after": 0.009308000730142943
+      },
+      "sequence_construction": {
+        "sequence_key_policy": "PHONEID + predicted_BUILDING_FLOOR, sorted by TIMESTAMP and ROW_ID",
+        "min_sequence_length_for_filtering": 3,
+        "total_sequences": 90,
+        "filtered_sequences": 77,
+        "filtered_rows": 1093,
+        "unfiltered_short_rows": 18,
+        "mean_sequence_length": 12.3444,
+        "median_sequence_length": 8.0,
+        "max_sequence_length": 74
+      },
+      "headline_mean_errors": {
+        "raw_knn_measurement": 9.34228,
+        "kalman_filtered": 9.515318,
+        "particle_filtered": 9.809531
+      }
+    },
+    "noise_medium_5dbm": {
+      "corruption": {
+        "scenario_seed": 44,
+        "detected_values_before": 18304,
+        "detected_values_after": 18302,
+        "noise_sigma_dbm": 5.0,
+        "noise_values_changed": 18304,
+        "missing_detected_fraction": 0.0,
+        "missing_values_masked": 0,
+        "feature_min_after": 0.0,
+        "feature_max_after": 0.7461977869482377,
+        "feature_mean_after": 0.009304897836022468
+      },
+      "sequence_construction": {
+        "sequence_key_policy": "PHONEID + predicted_BUILDING_FLOOR, sorted by TIMESTAMP and ROW_ID",
+        "min_sequence_length_for_filtering": 3,
+        "total_sequences": 91,
+        "filtered_sequences": 77,
+        "filtered_rows": 1092,
+        "unfiltered_short_rows": 19,
+        "mean_sequence_length": 12.2088,
+        "median_sequence_length": 7.0,
+        "max_sequence_length": 73
+      },
+      "headline_mean_errors": {
+        "raw_knn_measurement": 9.625387,
+        "kalman_filtered": 9.769555,
+        "particle_filtered": 10.090518
+      }
+    },
+    "noise_high_10dbm": {
+      "corruption": {
+        "scenario_seed": 45,
+        "detected_values_before": 18304,
+        "detected_values_after": 18151,
+        "noise_sigma_dbm": 10.0,
+        "noise_values_changed": 18304,
+        "missing_detected_fraction": 0.0,
+        "missing_values_masked": 0,
+        "feature_min_after": 0.0,
+        "feature_max_after": 0.8218467988195985,
+        "feature_mean_after": 0.009331358215323457
+      },
+      "sequence_construction": {
+        "sequence_key_policy": "PHONEID + predicted_BUILDING_FLOOR, sorted by TIMESTAMP and ROW_ID",
+        "min_sequence_length_for_filtering": 3,
+        "total_sequences": 91,
+        "filtered_sequences": 79,
+        "filtered_rows": 1094,
+        "unfiltered_short_rows": 17,
+        "mean_sequence_length": 12.2088,
+        "median_sequence_length": 8.0,
+        "max_sequence_length": 72
+      },
+      "headline_mean_errors": {
+        "raw_knn_measurement": 10.402317,
+        "kalman_filtered": 10.610836,
+        "particle_filtered": 11.043382
+      }
+    },
+    "missing_20pct_detected": {
+      "corruption": {
+        "scenario_seed": 47,
+        "detected_values_before": 18304,
+        "detected_values_after": 14643,
+        "noise_sigma_dbm": 0.0,
+        "noise_values_changed": 0,
+        "missing_detected_fraction": 0.2,
+        "missing_values_masked": 3661,
+        "feature_min_after": 0.0,
+        "feature_max_after": 0.6909090909090909,
+        "feature_mean_after": 0.007462690324976553
+      },
+      "sequence_construction": {
+        "sequence_key_policy": "PHONEID + predicted_BUILDING_FLOOR, sorted by TIMESTAMP and ROW_ID",
+        "min_sequence_length_for_filtering": 3,
+        "total_sequences": 94,
+        "filtered_sequences": 79,
+        "filtered_rows": 1089,
+        "unfiltered_short_rows": 22,
+        "mean_sequence_length": 11.8191,
+        "median_sequence_length": 7.0,
+        "max_sequence_length": 70
+      },
+      "headline_mean_errors": {
+        "raw_knn_measurement": 15.887834,
+        "kalman_filtered": 15.908676,
+        "particle_filtered": 15.651173
+      }
+    },
+    "missing_30pct_detected": {
+      "corruption": {
+        "scenario_seed": 48,
+        "detected_values_before": 18304,
+        "detected_values_after": 12813,
+        "noise_sigma_dbm": 0.0,
+        "noise_values_changed": 0,
+        "missing_detected_fraction": 0.3,
+        "missing_values_masked": 5491,
+        "feature_min_after": 0.0,
+        "feature_max_after": 0.6909090909090909,
+        "feature_mean_after": 0.006531695127554715
+      },
+      "sequence_construction": {
+        "sequence_key_policy": "PHONEID + predicted_BUILDING_FLOOR, sorted by TIMESTAMP and ROW_ID",
+        "min_sequence_length_for_filtering": 3,
+        "total_sequences": 101,
+        "filtered_sequences": 75,
+        "filtered_rows": 1069,
+        "unfiltered_short_rows": 42,
+        "mean_sequence_length": 11.0,
+        "median_sequence_length": 6.0,
+        "max_sequence_length": 70
+      },
+      "headline_mean_errors": {
+        "raw_knn_measurement": 23.447318,
+        "kalman_filtered": 23.392573,
+        "particle_filtered": 23.001049
+      }
+    },
+    "combined_5dbm_noise_20pct_missing": {
+      "corruption": {
+        "scenario_seed": 49,
+        "detected_values_before": 18304,
+        "detected_values_after": 14641,
+        "noise_sigma_dbm": 5.0,
+        "noise_values_changed": 18304,
+        "missing_detected_fraction": 0.2,
+        "missing_values_masked": 3660,
+        "feature_min_after": 0.0,
+        "feature_max_after": 0.7839735312662538,
+        "feature_mean_after": 0.0074620149409726135
+      },
+      "sequence_construction": {
+        "sequence_key_policy": "PHONEID + predicted_BUILDING_FLOOR, sorted by TIMESTAMP and ROW_ID",
+        "min_sequence_length_for_filtering": 3,
+        "total_sequences": 97,
+        "filtered_sequences": 82,
+        "filtered_rows": 1089,
+        "unfiltered_short_rows": 22,
+        "mean_sequence_length": 11.4536,
+        "median_sequence_length": 7.0,
+        "max_sequence_length": 68
+      },
+      "headline_mean_errors": {
+        "raw_knn_measurement": 16.101744,
+        "kalman_filtered": 16.146331,
+        "particle_filtered": 16.126176
+      }
+    }
+  },
+  "best_by_scenario": [
+    {
+      "scenario": "clean_validation",
+      "best_method": "raw_knn_measurement",
+      "best_mean_error_m": 9.34228,
+      "raw_mean_error_m": 9.34228,
+      "change_vs_raw_m": 0.0
+    },
+    {
+      "scenario": "combined_5dbm_noise_20pct_missing",
+      "best_method": "raw_knn_measurement",
+      "best_mean_error_m": 16.101744,
+      "raw_mean_error_m": 16.101744,
+      "change_vs_raw_m": 0.0
+    },
+    {
+      "scenario": "missing_20pct_detected",
+      "best_method": "particle_filtered",
+      "best_mean_error_m": 15.651173,
+      "raw_mean_error_m": 15.887834,
+      "change_vs_raw_m": -0.236661
+    },
+    {
+      "scenario": "missing_30pct_detected",
+      "best_method": "particle_filtered",
+      "best_mean_error_m": 23.001049,
+      "raw_mean_error_m": 23.447318,
+      "change_vs_raw_m": -0.446269
+    },
+    {
+      "scenario": "noise_high_10dbm",
+      "best_method": "raw_knn_measurement",
+      "best_mean_error_m": 10.402317,
+      "raw_mean_error_m": 10.402317,
+      "change_vs_raw_m": 0.0
+    },
+    {
+      "scenario": "noise_medium_5dbm",
+      "best_method": "raw_knn_measurement",
+      "best_mean_error_m": 9.625387,
+      "raw_mean_error_m": 9.625387,
+      "change_vs_raw_m": 0.0
+    }
+  ],
+  "output_files": {
+    "filtering_metrics": "D:\\Ahsan Assignment\\Dissertation\\Ahsan_Khalid_MSc_Project_Student_Cartridge\\MSc_Project_Code_Skeleton\\results\\tables\\05_filtering_metrics.csv",
+    "filtering_predictions": "D:\\Ahsan Assignment\\Dissertation\\Ahsan_Khalid_MSc_Project_Student_Cartridge\\MSc_Project_Code_Skeleton\\results\\tables\\05_filtering_predictions.csv",
+    "summary_json": "D:\\Ahsan Assignment\\Dissertation\\Ahsan_Khalid_MSc_Project_Student_Cartridge\\MSc_Project_Code_Skeleton\\results\\tables\\05_filtering_summary.json",
+    "summary_text": "D:\\Ahsan Assignment\\Dissertation\\Ahsan_Khalid_MSc_Project_Student_Cartridge\\MSc_Project_Code_Skeleton\\results\\experiment_logs\\05_kalman_particle_filtering_summary.txt"
+  }
+}

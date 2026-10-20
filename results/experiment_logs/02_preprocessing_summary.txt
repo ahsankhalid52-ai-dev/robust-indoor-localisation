@@ -1,0 +1,41 @@
+MSc Project - Preprocessing Summary
+Generated: 2026-09-09 13:52:30
+
+Preprocessing decision:
+  Raw no-signal value 100 was replaced with -110.0 dBm.
+  WAP/RSSI values were scaled to [0, 1] using fixed RSSI bounds -110 dBm to 0 dBm.
+  Only WAP001-WAP520 features are used as model input features.
+  Metadata columns are retained in target files for analysis, but not used as model inputs.
+
+Profile: trainingData
+  Rows: 19937
+  WAP features: 520
+  No-signal values replaced: 10008477 (96.5395%)
+  Detected signal values: 358763 (3.4605%)
+  Scaled feature range: 0.0 to 1.0
+  NaN count after scaling: 0
+  Building distribution: {'0': 5249, '1': 5196, '2': 9492}
+  Floor distribution: {'0': 4369, '1': 5002, '2': 4416, '3': 5048, '4': 1102}
+  Detected WAPs per row: {'min_detected_waps_per_row': 0, 'max_detected_waps_per_row': 51, 'mean_detected_waps_per_row': 17.9948, 'median_detected_waps_per_row': 17.0}
+
+Profile: validationData
+  Rows: 1111
+  WAP features: 520
+  No-signal values replaced: 559416 (96.8317%)
+  Detected signal values: 18304 (3.1683%)
+  Scaled feature range: 0.0 to 0.690909
+  NaN count after scaling: 0
+  Building distribution: {'0': 536, '1': 307, '2': 268}
+  Floor distribution: {'0': 132, '1': 462, '2': 306, '3': 172, '4': 39}
+  Detected WAPs per row: {'min_detected_waps_per_row': 1, 'max_detected_waps_per_row': 35, 'mean_detected_waps_per_row': 16.4752, 'median_detected_waps_per_row': 15.0}
+
+Saved outputs:
+  - train_features_scaled: D:\Ahsan_Khalid_MSc_Project_Student_Cartridge\Ahsan_Khalid_MSc_Project_Student_Cartridge\MSc_Project_Code_Skeleton\data\processed\train_features_scaled.csv
+  - validation_features_scaled: D:\Ahsan_Khalid_MSc_Project_Student_Cartridge\Ahsan_Khalid_MSc_Project_Student_Cartridge\MSc_Project_Code_Skeleton\data\processed\validation_features_scaled.csv
+  - train_targets: D:\Ahsan_Khalid_MSc_Project_Student_Cartridge\Ahsan_Khalid_MSc_Project_Student_Cartridge\MSc_Project_Code_Skeleton\data\processed\train_targets.csv
+  - validation_targets: D:\Ahsan_Khalid_MSc_Project_Student_Cartridge\Ahsan_Khalid_MSc_Project_Student_Cartridge\MSc_Project_Code_Skeleton\data\processed\validation_targets.csv
+  - preprocessing_summary_json: D:\Ahsan_Khalid_MSc_Project_Student_Cartridge\Ahsan_Khalid_MSc_Project_Student_Cartridge\MSc_Project_Code_Skeleton\results\tables\preprocessing_summary.json
+  - preprocessing_summary_text: D:\Ahsan_Khalid_MSc_Project_Student_Cartridge\Ahsan_Khalid_MSc_Project_Student_Cartridge\MSc_Project_Code_Skeleton\results\experiment_logs\02_preprocessing_summary.txt
+
+Next step:
+  Review preprocessing outputs, then run clean-data baseline models: KNN and Random Forest.

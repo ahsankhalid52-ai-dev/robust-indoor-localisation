@@ -1,0 +1,37 @@
+MSc Project - Dataset Inspection Summary
+Generated: 2026-09-09 13:50:33
+Project root: D:\Ahsan_Khalid_MSc_Project_Student_Cartridge\Ahsan_Khalid_MSc_Project_Student_Cartridge\MSc_Project_Code_Skeleton
+
+Column groups:
+  wap_cols: 520 columns
+    WAP001, WAP002, WAP003, WAP004, WAP005, WAP006, WAP007, WAP008 ...
+  target_cols: 4 columns
+    BUILDINGID, FLOOR, LONGITUDE, LATITUDE
+  meta_cols: 5 columns
+    SPACEID, RELATIVEPOSITION, USERID, PHONEID, TIMESTAMP
+  other_cols: 0 columns
+
+Profile: trainingData
+  Shape: 19937 rows x 529 columns
+  WAP feature count: 520
+  No-signal count: 10008477 (96.5395%)
+  Detected signal count: 358763 (3.4605%)
+  Total NaN count: 0
+  WAP NaN count: 0
+  Target columns found: BUILDINGID, FLOOR, LONGITUDE, LATITUDE
+  Target distributions: {'BUILDINGID': {'0': 5249, '1': 5196, '2': 9492}, 'FLOOR': {'0': 4369, '1': 5002, '2': 4416, '3': 5048, '4': 1102}}
+  Coordinate summary: {'LONGITUDE': {'min': -7691.338399998844, 'max': -7300.818990092725, 'mean': -7464.275946963259, 'std': 123.40201020928228}, 'LATITUDE': {'min': 4864745.745015971, 'max': 4865016.687799998, 'mean': 4864870.888686756, 'std': 66.93318281162419}}
+
+Profile: validationData
+  Shape: 1111 rows x 529 columns
+  WAP feature count: 520
+  No-signal count: 559416 (96.8317%)
+  Detected signal count: 18304 (3.1683%)
+  Total NaN count: 0
+  WAP NaN count: 0
+  Target columns found: BUILDINGID, FLOOR, LONGITUDE, LATITUDE
+  Target distributions: {'BUILDINGID': {'0': 536, '1': 307, '2': 268}, 'FLOOR': {'0': 132, '1': 462, '2': 306, '3': 172, '4': 39}}
+  Coordinate summary: {'LONGITUDE': {'min': -7695.93875492993, 'max': -7299.786516730871, 'mean': -7529.1974481992675, 'std': 120.20933590804925}, 'LATITUDE': {'min': 4864748.01548531, 'max': 4865017.364684202, 'mean': 4864901.927491519, 'std': 70.27279937932624}}
+
+Next step:
+  Review this output before writing preprocessing code. Do not train models until the no-signal handling decision is confirmed.

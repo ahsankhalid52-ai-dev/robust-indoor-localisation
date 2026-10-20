@@ -1,0 +1,9 @@
+# Final experiment environment lock (2026-08-31)
+# The scripts also record the actual runtime versions in each JSON summary.
+numpy
+pandas
+scipy
+scikit-learn
+joblib
+threadpoolctl
+matplotlib

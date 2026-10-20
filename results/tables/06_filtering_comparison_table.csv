@@ -1,0 +1,19 @@
+scenario,method,mean_positioning_error_m,median_positioning_error_m,p90_positioning_error_m,total_sequences,filtered_sequences,filtered_rows,scenario_label
+clean_validation,raw_knn_measurement,9.34228,5.934393,19.348794,90,77,1093,Clean
+clean_validation,kalman_filtered,9.515318,6.151524,19.787864,90,77,1093,Clean
+clean_validation,particle_filtered,9.809531,6.237664,20.92759,90,77,1093,Clean
+noise_medium_5dbm,raw_knn_measurement,9.625387,6.046458,19.703845,91,77,1092,5 dBm noise
+noise_medium_5dbm,kalman_filtered,9.769555,6.279713,19.8465,91,77,1092,5 dBm noise
+noise_medium_5dbm,particle_filtered,10.090518,6.431276,21.068869,91,77,1092,5 dBm noise
+noise_high_10dbm,raw_knn_measurement,10.402317,6.584653,20.653038,91,79,1094,10 dBm noise
+noise_high_10dbm,kalman_filtered,10.610836,6.922992,21.047698,91,79,1094,10 dBm noise
+noise_high_10dbm,particle_filtered,11.043382,7.319768,21.489803,91,79,1094,10 dBm noise
+missing_20pct_detected,raw_knn_measurement,15.887834,7.946956,26.888397,94,79,1089,20% missing
+missing_20pct_detected,kalman_filtered,15.908676,7.958196,27.050756,94,79,1089,20% missing
+missing_20pct_detected,particle_filtered,15.651173,8.2644,27.982471,94,79,1089,20% missing
+missing_30pct_detected,raw_knn_measurement,23.447318,10.562863,49.543065,101,75,1069,30% missing
+missing_30pct_detected,kalman_filtered,23.392573,10.911034,48.660394,101,75,1069,30% missing
+missing_30pct_detected,particle_filtered,23.001049,11.719082,49.359564,101,75,1069,30% missing
+combined_5dbm_noise_20pct_missing,raw_knn_measurement,16.101744,8.368429,29.614874,97,82,1089,5 dBm + 20% missing
+combined_5dbm_noise_20pct_missing,kalman_filtered,16.146331,8.648379,29.459838,97,82,1089,5 dBm + 20% missing
+combined_5dbm_noise_20pct_missing,particle_filtered,16.126176,9.113459,29.897583,97,82,1089,5 dBm + 20% missing

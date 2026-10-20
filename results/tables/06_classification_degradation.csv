@@ -1,0 +1,9 @@
+scenario,scenario_label,rf_floor_accuracy,rf_floor_macro_f1,missing_detected_fraction,noise_sigma_dbm
+clean_validation,Clean,0.913591,0.898921,0.0,0.0
+noise_low_2dbm,2 dBm noise,0.916292,0.903445,0.0,2.0
+noise_medium_5dbm,5 dBm noise,0.912691,0.894732,0.0,5.0
+noise_high_10dbm,10 dBm noise,0.89829,0.879683,0.0,10.0
+missing_10pct_detected,10% missing,0.89649,0.87823,0.1,0.0
+missing_20pct_detected,20% missing,0.874887,0.858487,0.2,0.0
+missing_30pct_detected,30% missing,0.840684,0.792231,0.3,0.0
+combined_5dbm_noise_20pct_missing,5 dBm + 20% missing,0.857786,0.813181,0.2,5.0

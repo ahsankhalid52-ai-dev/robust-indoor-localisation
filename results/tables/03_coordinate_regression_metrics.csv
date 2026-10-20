@@ -1,0 +1,3 @@
+task,model,longitude_mae,latitude_mae,longitude_rmse,latitude_rmse,mean_positioning_error_m,median_positioning_error_m,p75_positioning_error_m,p90_positioning_error_m,max_positioning_error_m,fit_seconds,predict_seconds
+coordinate_regression,KNNRegressor_5_distance,6.260565,5.768711,12.489829,10.845912,9.34228,5.934393,11.117619,19.348794,239.434126,0.049,0.118
+coordinate_regression,RandomForestRegressor_150,8.649677,7.510638,13.957628,12.205343,12.485688,8.061189,15.166539,30.229512,114.299987,10.237,0.16

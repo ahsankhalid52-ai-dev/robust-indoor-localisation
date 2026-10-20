@@ -1,0 +1,7 @@
+scenario,scenario_label,kalman_filtered,particle_filtered,raw_knn_measurement
+clean_validation,Clean,9.515318,9.809531,9.34228
+noise_medium_5dbm,5 dBm noise,9.769555,10.090518,9.625387
+noise_high_10dbm,10 dBm noise,10.610836,11.043382,10.402317
+missing_20pct_detected,20% missing,15.908676,15.651173,15.887834
+missing_30pct_detected,30% missing,23.392573,23.001049,23.447318
+combined_5dbm_noise_20pct_missing,5 dBm + 20% missing,16.146331,16.126176,16.101744

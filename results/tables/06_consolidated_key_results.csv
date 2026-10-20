@@ -1,0 +1,8 @@
+finding_area,key_result,value,interpretation
+Clean classification baseline,RandomForest_150 achieved the best BUILDINGID accuracy,0.9991,Building prediction is highly reliable under clean validation conditions.
+Clean floor baseline,RandomForest_150 achieved the best FLOOR accuracy,0.9136,"Floor prediction is more difficult than building prediction, but Random Forest performs strongest."
+Clean coordinate baseline,KNNRegressor_5_distance achieved the lowest mean positioning error,9.342 m,KNN is the strongest coordinate baseline and becomes the measurement model for filtering.
+RSSI noise robustness,10 dBm RSSI noise increased KNN coordinate mean error,10.402 m,Pure RSSI noise caused moderate degradation compared with missing-WAP corruption.
+Missing-WAP robustness,30% missing detected WAPs strongly increased KNN coordinate mean error,23.447 m,The model depends heavily on sparse detected access-point signals.
+Particle filtering under missing data,Particle filtering slightly improved 20% missing-WAP scenario,-0.237 m vs raw,The improvement is small but suggests probabilistic smoothing can help severe missing-signal cases.
+Filtering limitation,Raw KNN remained best for clean and pure-noise scenarios,No improvement,Filtering is limited because the dataset is not a true continuous trajectory dataset.

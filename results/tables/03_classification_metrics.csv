@@ -1,0 +1,7 @@
+task,model,target,accuracy,macro_f1,weighted_f1,fit_seconds,predict_seconds
+classification,KNN_5_distance,BUILDINGID,0.9982,0.997983,0.998201,0.054,1.134
+classification,KNN_5_distance,FLOOR,0.887489,0.884409,0.888031,0.068,0.109
+classification,KNN_5_distance,BUILDING_FLOOR,0.887489,0.866833,0.888375,0.096,0.142
+classification,RandomForest_150,BUILDINGID,0.9991,0.999146,0.9991,0.976,0.1
+classification,RandomForest_150,FLOOR,0.913591,0.898921,0.913736,1.266,0.073
+classification,RandomForest_150,BUILDING_FLOOR,0.906391,0.892406,0.907387,1.217,0.056

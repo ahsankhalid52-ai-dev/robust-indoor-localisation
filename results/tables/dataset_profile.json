@@ -1,0 +1,102 @@
+{
+  "trainingData": {
+    "name": "trainingData",
+    "shape": {
+      "rows": 19937,
+      "columns": 529
+    },
+    "wap_feature_count": 520,
+    "target_columns_found": [
+      "BUILDINGID",
+      "FLOOR",
+      "LONGITUDE",
+      "LATITUDE"
+    ],
+    "total_wap_values": 10367240,
+    "no_signal_value_used": 100,
+    "no_signal_count": 10008477,
+    "no_signal_percentage": 96.5395,
+    "detected_signal_count": 358763,
+    "detected_signal_percentage": 3.4605,
+    "nan_count_total": 0,
+    "nan_count_wap_features": 0,
+    "target_distributions": {
+      "BUILDINGID": {
+        "0": 5249,
+        "1": 5196,
+        "2": 9492
+      },
+      "FLOOR": {
+        "0": 4369,
+        "1": 5002,
+        "2": 4416,
+        "3": 5048,
+        "4": 1102
+      }
+    },
+    "coordinate_summary": {
+      "LONGITUDE": {
+        "min": -7691.338399998844,
+        "max": -7300.818990092725,
+        "mean": -7464.275946963259,
+        "std": 123.40201020928228
+      },
+      "LATITUDE": {
+        "min": 4864745.745015971,
+        "max": 4865016.687799998,
+        "mean": 4864870.888686756,
+        "std": 66.93318281162419
+      }
+    }
+  },
+  "validationData": {
+    "name": "validationData",
+    "shape": {
+      "rows": 1111,
+      "columns": 529
+    },
+    "wap_feature_count": 520,
+    "target_columns_found": [
+      "BUILDINGID",
+      "FLOOR",
+      "LONGITUDE",
+      "LATITUDE"
+    ],
+    "total_wap_values": 577720,
+    "no_signal_value_used": 100,
+    "no_signal_count": 559416,
+    "no_signal_percentage": 96.8317,
+    "detected_signal_count": 18304,
+    "detected_signal_percentage": 3.1683,
+    "nan_count_total": 0,
+    "nan_count_wap_features": 0,
+    "target_distributions": {
+      "BUILDINGID": {
+        "0": 536,
+        "1": 307,
+        "2": 268
+      },
+      "FLOOR": {
+        "0": 132,
+        "1": 462,
+        "2": 306,
+        "3": 172,
+        "4": 39
+      }
+    },
+    "coordinate_summary": {
+      "LONGITUDE": {
+        "min": -7695.93875492993,
+        "max": -7299.786516730871,
+        "mean": -7529.1974481992675,
+        "std": 120.20933590804925
+      },
+      "LATITUDE": {
+        "min": 4864748.01548531,
+        "max": 4865017.364684202,
+        "mean": 4864901.927491519,
+        "std": 70.27279937932624
+      }
+    }
+  }
+}

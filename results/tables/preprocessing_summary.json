@@ -1,0 +1,117 @@
+{
+  "generated_at": "2026-09-09T13:52:28",
+  "project_root": "D:\\Ahsan_Khalid_MSc_Project_Student_Cartridge\\Ahsan_Khalid_MSc_Project_Student_Cartridge\\MSc_Project_Code_Skeleton",
+  "preprocessing_decision": {
+    "raw_no_signal_value": 100,
+    "replacement_dbm": -110.0,
+    "scaling": "fixed_minmax_from_-110_dBm_to_0_dBm",
+    "model_input_features": "WAP001-WAP520 only",
+    "metadata_usage": "retained for analysis only; not used as model input"
+  },
+  "trainingData": {
+    "split": "trainingData",
+    "rows": 19937,
+    "columns_raw": 529,
+    "wap_feature_count": 520,
+    "no_signal_raw_value": 100,
+    "no_signal_replacement_dbm": -110.0,
+    "no_signal_count": 10008477,
+    "no_signal_percentage": 96.5395,
+    "detected_signal_count": 358763,
+    "detected_signal_percentage": 3.4605,
+    "scaled_feature_min": 0.0,
+    "scaled_feature_max": 1.0,
+    "scaled_feature_mean": 0.009911,
+    "nan_count_after_scaling": 0,
+    "building_distribution": {
+      "0": 5249,
+      "1": 5196,
+      "2": 9492
+    },
+    "floor_distribution": {
+      "0": 4369,
+      "1": 5002,
+      "2": 4416,
+      "3": 5048,
+      "4": 1102
+    },
+    "building_floor_distribution": {
+      "0_0": 1059,
+      "0_1": 1356,
+      "0_2": 1443,
+      "0_3": 1391,
+      "1_0": 1368,
+      "1_1": 1484,
+      "1_2": 1396,
+      "1_3": 948,
+      "2_0": 1942,
+      "2_1": 2162,
+      "2_2": 1577,
+      "2_3": 2709,
+      "2_4": 1102
+    },
+    "signal_count_stats": {
+      "min_detected_waps_per_row": 0,
+      "max_detected_waps_per_row": 51,
+      "mean_detected_waps_per_row": 17.9948,
+      "median_detected_waps_per_row": 17.0
+    }
+  },
+  "validationData": {
+    "split": "validationData",
+    "rows": 1111,
+    "columns_raw": 529,
+    "wap_feature_count": 520,
+    "no_signal_raw_value": 100,
+    "no_signal_replacement_dbm": -110.0,
+    "no_signal_count": 559416,
+    "no_signal_percentage": 96.8317,
+    "detected_signal_count": 18304,
+    "detected_signal_percentage": 3.1683,
+    "scaled_feature_min": 0.0,
+    "scaled_feature_max": 0.690909,
+    "scaled_feature_mean": 0.009308,
+    "nan_count_after_scaling": 0,
+    "building_distribution": {
+      "0": 536,
+      "1": 307,
+      "2": 268
+    },
+    "floor_distribution": {
+      "0": 132,
+      "1": 462,
+      "2": 306,
+      "3": 172,
+      "4": 39
+    },
+    "building_floor_distribution": {
+      "0_0": 78,
+      "0_1": 208,
+      "0_2": 165,
+      "0_3": 85,
+      "1_0": 30,
+      "1_1": 143,
+      "1_2": 87,
+      "1_3": 47,
+      "2_0": 24,
+      "2_1": 111,
+      "2_2": 54,
+      "2_3": 40,
+      "2_4": 39
+    },
+    "signal_count_stats": {
+      "min_detected_waps_per_row": 1,
+      "max_detected_waps_per_row": 35,
+      "mean_detected_waps_per_row": 16.4752,
+      "median_detected_waps_per_row": 15.0
+    }
+  },
+  "output_files": {
+    "train_features_scaled": "D:\\Ahsan_Khalid_MSc_Project_Student_Cartridge\\Ahsan_Khalid_MSc_Project_Student_Cartridge\\MSc_Project_Code_Skeleton\\data\\processed\\train_features_scaled.csv",
+    "validation_features_scaled": "D:\\Ahsan_Khalid_MSc_Project_Student_Cartridge\\Ahsan_Khalid_MSc_Project_Student_Cartridge\\MSc_Project_Code_Skeleton\\data\\processed\\validation_features_scaled.csv",
+    "train_targets": "D:\\Ahsan_Khalid_MSc_Project_Student_Cartridge\\Ahsan_Khalid_MSc_Project_Student_Cartridge\\MSc_Project_Code_Skeleton\\data\\processed\\train_targets.csv",
+    "validation_targets": "D:\\Ahsan_Khalid_MSc_Project_Student_Cartridge\\Ahsan_Khalid_MSc_Project_Student_Cartridge\\MSc_Project_Code_Skeleton\\data\\processed\\validation_targets.csv",
+    "preprocessing_summary_json": "D:\\Ahsan_Khalid_MSc_Project_Student_Cartridge\\Ahsan_Khalid_MSc_Project_Student_Cartridge\\MSc_Project_Code_Skeleton\\results\\tables\\preprocessing_summary.json",
+    "preprocessing_summary_text": "D:\\Ahsan_Khalid_MSc_Project_Student_Cartridge\\Ahsan_Khalid_MSc_Project_Student_Cartridge\\MSc_Project_Code_Skeleton\\results\\experiment_logs\\02_preprocessing_summary.txt"
+  }
+}

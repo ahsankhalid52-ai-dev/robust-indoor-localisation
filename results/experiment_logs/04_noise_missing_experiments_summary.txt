@@ -1,0 +1,92 @@
+MSc Project - Step 4 Noise and Missing-WAP Experiments Summary
+Generated: 2026-09-02 11:37:09
+
+Purpose:
+  Test robustness of clean baseline models under controlled RSSI noise and missing-WAP/dropout conditions.
+  Models are trained on clean Step 2 training data and evaluated on corrupted validation data.
+
+Scenarios evaluated:
+  clean_validation: Original preprocessed validation data with no extra artificial corruption.
+  noise_low_2dbm: Gaussian RSSI noise with sigma=2 dBm applied to detected WAP signals.
+  noise_medium_5dbm: Gaussian RSSI noise with sigma=5 dBm applied to detected WAP signals.
+  noise_high_10dbm: Gaussian RSSI noise with sigma=10 dBm applied to detected WAP signals.
+  missing_10pct_detected: Randomly mask 10% of detected WAP signals to no-signal value 0.0.
+  missing_20pct_detected: Randomly mask 20% of detected WAP signals to no-signal value 0.0.
+  missing_30pct_detected: Randomly mask 30% of detected WAP signals to no-signal value 0.0.
+  combined_5dbm_noise_20pct_missing: Apply sigma=5 dBm noise and then mask 20% of detected WAP signals.
+
+Classification headline results:
+  clean_validation | KNN_5_distance | BUILDINGID: accuracy=0.9982, macro_f1=0.997983
+  clean_validation | KNN_5_distance | FLOOR: accuracy=0.887489, macro_f1=0.884409
+  clean_validation | KNN_5_distance | BUILDING_FLOOR: accuracy=0.887489, macro_f1=0.866833
+  clean_validation | RandomForest_150 | BUILDINGID: accuracy=0.9991, macro_f1=0.999146
+  clean_validation | RandomForest_150 | FLOOR: accuracy=0.913591, macro_f1=0.898921
+  clean_validation | RandomForest_150 | BUILDING_FLOOR: accuracy=0.906391, macro_f1=0.892406
+  noise_low_2dbm | KNN_5_distance | BUILDINGID: accuracy=0.9973, macro_f1=0.99682
+  noise_low_2dbm | KNN_5_distance | FLOOR: accuracy=0.887489, macro_f1=0.884573
+  noise_low_2dbm | KNN_5_distance | BUILDING_FLOOR: accuracy=0.887489, macro_f1=0.869795
+  noise_low_2dbm | RandomForest_150 | BUILDINGID: accuracy=0.9991, macro_f1=0.999146
+  noise_low_2dbm | RandomForest_150 | FLOOR: accuracy=0.916292, macro_f1=0.903445
+  noise_low_2dbm | RandomForest_150 | BUILDING_FLOOR: accuracy=0.909091, macro_f1=0.896386
+  noise_medium_5dbm | KNN_5_distance | BUILDINGID: accuracy=0.9973, macro_f1=0.99682
+  noise_medium_5dbm | KNN_5_distance | FLOOR: accuracy=0.884788, macro_f1=0.880341
+  noise_medium_5dbm | KNN_5_distance | BUILDING_FLOOR: accuracy=0.883888, macro_f1=0.862925
+  noise_medium_5dbm | RandomForest_150 | BUILDINGID: accuracy=0.9991, macro_f1=0.999146
+  noise_medium_5dbm | RandomForest_150 | FLOOR: accuracy=0.912691, macro_f1=0.894732
+  noise_medium_5dbm | RandomForest_150 | BUILDING_FLOOR: accuracy=0.909091, macro_f1=0.894065
+  noise_high_10dbm | KNN_5_distance | BUILDINGID: accuracy=0.993699, macro_f1=0.993118
+  noise_high_10dbm | KNN_5_distance | FLOOR: accuracy=0.877588, macro_f1=0.869208
+  noise_high_10dbm | KNN_5_distance | BUILDING_FLOOR: accuracy=0.876688, macro_f1=0.857455
+  noise_high_10dbm | RandomForest_150 | BUILDINGID: accuracy=0.9982, macro_f1=0.997979
+  noise_high_10dbm | RandomForest_150 | FLOOR: accuracy=0.89829, macro_f1=0.879683
+  noise_high_10dbm | RandomForest_150 | BUILDING_FLOOR: accuracy=0.890189, macro_f1=0.872923
+  missing_10pct_detected | KNN_5_distance | BUILDINGID: accuracy=0.993699, macro_f1=0.992801
+  missing_10pct_detected | KNN_5_distance | FLOOR: accuracy=0.856886, macro_f1=0.855565
+  missing_10pct_detected | KNN_5_distance | BUILDING_FLOOR: accuracy=0.854185, macro_f1=0.833839
+  missing_10pct_detected | RandomForest_150 | BUILDINGID: accuracy=0.9982, macro_f1=0.997979
+  missing_10pct_detected | RandomForest_150 | FLOOR: accuracy=0.89649, macro_f1=0.87823
+  missing_10pct_detected | RandomForest_150 | BUILDING_FLOOR: accuracy=0.886589, macro_f1=0.866717
+  missing_20pct_detected | KNN_5_distance | BUILDINGID: accuracy=0.974797, macro_f1=0.972778
+  missing_20pct_detected | KNN_5_distance | FLOOR: accuracy=0.79658, macro_f1=0.786986
+  missing_20pct_detected | KNN_5_distance | BUILDING_FLOOR: accuracy=0.788479, macro_f1=0.761014
+  missing_20pct_detected | RandomForest_150 | BUILDINGID: accuracy=0.9982, macro_f1=0.998292
+  missing_20pct_detected | RandomForest_150 | FLOOR: accuracy=0.874887, macro_f1=0.858487
+  missing_20pct_detected | RandomForest_150 | BUILDING_FLOOR: accuracy=0.855986, macro_f1=0.831261
+  missing_30pct_detected | KNN_5_distance | BUILDINGID: accuracy=0.949595, macro_f1=0.947568
+  missing_30pct_detected | KNN_5_distance | FLOOR: accuracy=0.736274, macro_f1=0.705626
+  missing_30pct_detected | KNN_5_distance | BUILDING_FLOOR: accuracy=0.725473, macro_f1=0.706212
+  missing_30pct_detected | RandomForest_150 | BUILDINGID: accuracy=0.9955, macro_f1=0.99574
+  missing_30pct_detected | RandomForest_150 | FLOOR: accuracy=0.840684, macro_f1=0.792231
+  missing_30pct_detected | RandomForest_150 | BUILDING_FLOOR: accuracy=0.814581, macro_f1=0.775658
+  combined_5dbm_noise_20pct_missing | KNN_5_distance | BUILDINGID: accuracy=0.976598, macro_f1=0.975052
+  combined_5dbm_noise_20pct_missing | KNN_5_distance | FLOOR: accuracy=0.79658, macro_f1=0.788532
+  combined_5dbm_noise_20pct_missing | KNN_5_distance | BUILDING_FLOOR: accuracy=0.786679, macro_f1=0.760761
+  combined_5dbm_noise_20pct_missing | RandomForest_150 | BUILDINGID: accuracy=0.9991, macro_f1=0.999146
+  combined_5dbm_noise_20pct_missing | RandomForest_150 | FLOOR: accuracy=0.857786, macro_f1=0.813181
+  combined_5dbm_noise_20pct_missing | RandomForest_150 | BUILDING_FLOOR: accuracy=0.821782, macro_f1=0.79465
+
+Coordinate regression headline results:
+  clean_validation | KNNRegressor_5_distance: mean_error=9.34228 m, median_error=5.934393 m, p90_error=19.348794 m
+  clean_validation | RandomForestRegressor_150: mean_error=12.485688 m, median_error=8.061189 m, p90_error=30.229512 m
+  noise_low_2dbm | KNNRegressor_5_distance: mean_error=9.543011 m, median_error=6.009983 m, p90_error=19.681133 m
+  noise_low_2dbm | RandomForestRegressor_150: mean_error=12.652195 m, median_error=8.21277 m, p90_error=30.169172 m
+  noise_medium_5dbm | KNNRegressor_5_distance: mean_error=9.625387 m, median_error=6.046458 m, p90_error=19.703845 m
+  noise_medium_5dbm | RandomForestRegressor_150: mean_error=13.09724 m, median_error=8.66951 m, p90_error=29.897836 m
+  noise_high_10dbm | KNNRegressor_5_distance: mean_error=10.402317 m, median_error=6.584653 m, p90_error=20.653038 m
+  noise_high_10dbm | RandomForestRegressor_150: mean_error=14.812954 m, median_error=10.281685 m, p90_error=32.058147 m
+  missing_10pct_detected | KNNRegressor_5_distance: mean_error=11.642481 m, median_error=6.845056 m, p90_error=22.537485 m
+  missing_10pct_detected | RandomForestRegressor_150: mean_error=15.300306 m, median_error=9.422769 m, p90_error=36.745446 m
+  missing_20pct_detected | KNNRegressor_5_distance: mean_error=15.887834 m, median_error=7.946956 m, p90_error=26.888397 m
+  missing_20pct_detected | RandomForestRegressor_150: mean_error=19.227524 m, median_error=11.838634 m, p90_error=43.520477 m
+  missing_30pct_detected | KNNRegressor_5_distance: mean_error=23.447318 m, median_error=10.562863 m, p90_error=49.543065 m
+  missing_30pct_detected | RandomForestRegressor_150: mean_error=25.009278 m, median_error=15.366047 m, p90_error=60.282195 m
+  combined_5dbm_noise_20pct_missing | KNNRegressor_5_distance: mean_error=16.101744 m, median_error=8.368429 m, p90_error=29.614874 m
+  combined_5dbm_noise_20pct_missing | RandomForestRegressor_150: mean_error=20.215963 m, median_error=12.581923 m, p90_error=45.128501 m
+
+Interpretation guidance:
+  Compare each scenario against clean_validation to quantify degradation.
+  Strong degradation under missing-WAP scenarios means the model depends heavily on sparse detected AP signals.
+  These results will justify the later Kalman/particle filtering extension and the robustness discussion.
+
+Next step:
+  Review degradation results, then prepare Step 5: coordinate-sequence construction for Kalman and particle filtering experiments.

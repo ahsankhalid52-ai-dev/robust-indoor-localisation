@@ -1,0 +1,64 @@
+{
+  "generated_at_source_steps": {
+    "step3": "2026-09-02T11:36:28",
+    "step4": "2026-09-02T11:37:08",
+    "step5": "2026-09-02T11:37:28"
+  },
+  "outputs": {
+    "classification_degradation": "D:\\Ahsan Assignment\\Dissertation\\Ahsan_Khalid_MSc_Project_Student_Cartridge\\MSc_Project_Code_Skeleton\\results\\tables\\06_classification_degradation.csv",
+    "coordinate_degradation": "D:\\Ahsan Assignment\\Dissertation\\Ahsan_Khalid_MSc_Project_Student_Cartridge\\MSc_Project_Code_Skeleton\\results\\tables\\06_robustness_coordinate_degradation.csv",
+    "filtering_comparison": "D:\\Ahsan Assignment\\Dissertation\\Ahsan_Khalid_MSc_Project_Student_Cartridge\\MSc_Project_Code_Skeleton\\results\\tables\\06_filtering_comparison_table.csv",
+    "filtering_wide": "D:\\Ahsan Assignment\\Dissertation\\Ahsan_Khalid_MSc_Project_Student_Cartridge\\MSc_Project_Code_Skeleton\\results\\tables\\06_filtering_mean_error_wide.csv",
+    "key_results": "D:\\Ahsan Assignment\\Dissertation\\Ahsan_Khalid_MSc_Project_Student_Cartridge\\MSc_Project_Code_Skeleton\\results\\tables\\06_consolidated_key_results.csv",
+    "figures": [
+      "D:\\Ahsan Assignment\\Dissertation\\Ahsan_Khalid_MSc_Project_Student_Cartridge\\MSc_Project_Code_Skeleton\\results\\figures\\06_rf_floor_accuracy_by_scenario.png",
+      "D:\\Ahsan Assignment\\Dissertation\\Ahsan_Khalid_MSc_Project_Student_Cartridge\\MSc_Project_Code_Skeleton\\results\\figures\\06_knn_coordinate_mean_error_by_scenario.png",
+      "D:\\Ahsan Assignment\\Dissertation\\Ahsan_Khalid_MSc_Project_Student_Cartridge\\MSc_Project_Code_Skeleton\\results\\figures\\06_filtering_mean_error_comparison.png",
+      "D:\\Ahsan Assignment\\Dissertation\\Ahsan_Khalid_MSc_Project_Student_Cartridge\\MSc_Project_Code_Skeleton\\results\\figures\\06_missing_wap_effect_on_coordinate_error.png"
+    ]
+  },
+  "headline_findings": [
+    {
+      "finding_area": "Clean classification baseline",
+      "key_result": "RandomForest_150 achieved the best BUILDINGID accuracy",
+      "value": "0.9991",
+      "interpretation": "Building prediction is highly reliable under clean validation conditions."
+    },
+    {
+      "finding_area": "Clean floor baseline",
+      "key_result": "RandomForest_150 achieved the best FLOOR accuracy",
+      "value": "0.9136",
+      "interpretation": "Floor prediction is more difficult than building prediction, but Random Forest performs strongest."
+    },
+    {
+      "finding_area": "Clean coordinate baseline",
+      "key_result": "KNNRegressor_5_distance achieved the lowest mean positioning error",
+      "value": "9.342 m",
+      "interpretation": "KNN is the strongest coordinate baseline and becomes the measurement model for filtering."
+    },
+    {
+      "finding_area": "RSSI noise robustness",
+      "key_result": "10 dBm RSSI noise increased KNN coordinate mean error",
+      "value": "10.402 m",
+      "interpretation": "Pure RSSI noise caused moderate degradation compared with missing-WAP corruption."
+    },
+    {
+      "finding_area": "Missing-WAP robustness",
+      "key_result": "30% missing detected WAPs strongly increased KNN coordinate mean error",
+      "value": "23.447 m",
+      "interpretation": "The model depends heavily on sparse detected access-point signals."
+    },
+    {
+      "finding_area": "Particle filtering under missing data",
+      "key_result": "Particle filtering slightly improved 20% missing-WAP scenario",
+      "value": "-0.237 m vs raw",
+      "interpretation": "The improvement is small but suggests probabilistic smoothing can help severe missing-signal cases."
+    },
+    {
+      "finding_area": "Filtering limitation",
+      "key_result": "Raw KNN remained best for clean and pure-noise scenarios",
+      "value": "No improvement",
+      "interpretation": "Filtering is limited because the dataset is not a true continuous trajectory dataset."
+    }
+  ]
+}
